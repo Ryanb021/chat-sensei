@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  display: flex;
+}
+
+
+.sidemenu {
+  width: 240px;
+  border: 1px solid white;
 }
 
 .App-logo {
