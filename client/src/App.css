@@ -82,6 +82,38 @@
   color: #61dafb;
 }
 
+.chat-log {
+  padding: 24px;
+  text-align: left;
+  display: flex;
+}
+
+.chat-message {
+
+}
+
+.chat-message-center {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.avatar{
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.message {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
