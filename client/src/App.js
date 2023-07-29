@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import './normal.css';
 // import setState
-import { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 
 function App() {
   // use effect run once when app loads
@@ -29,7 +29,7 @@ function App() {
   }
 
   function getEngines() {
-    fetch("http://localhost:4000/models")
+    fetch("https://chat-sensei-server.onrender.com/models")
       .then(res => res.json())
       .then(data =>
         // console.log(data.models.data)
@@ -43,7 +43,7 @@ function App() {
     setChatLog(chatLogNew)
     // fetch response to the api combining the chat log array of messages and sending it as a message to localhost:3000 as a post
     const messages = chatLogNew.map((message) => message.message).join("\n")
-    const response = await fetch("http://localhost:4000", {
+    const response = await fetch("https://chat-sensei-server.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
