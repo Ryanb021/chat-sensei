@@ -3,7 +3,7 @@ const express = require('express');
 
 const configuration = new Configuration({
   organization: "org-2tjpSXMjpHzwOmuknaORiEZM",
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
