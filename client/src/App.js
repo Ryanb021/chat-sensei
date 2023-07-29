@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+/* eslint-disable */
 import './App.css';
 import './normal.css';
 // import setState
