@@ -29,7 +29,9 @@ function App() {
   }
 
   function getEngines() {
-    fetch("https://chat-sensei-server.onrender.com/models")
+    fetch("https://chat-sensei-server.onrender.com/models", {
+      mode: 'no-cors',
+    })
       .then(res => res.json())
       .then(data =>
         // console.log(data.models.data)
@@ -44,6 +46,7 @@ function App() {
     // fetch response to the api combining the chat log array of messages and sending it as a message to localhost:3000 as a post
     const messages = chatLogNew.map((message) => message.message).join("\n")
     const response = await fetch("https://chat-sensei-server.onrender.com", {
+      mode: 'no-cors',
       method: "POST",
       headers: {
         "Content-Type": "application/json"
