@@ -2,45 +2,75 @@ import logo from './logo.svg';
 import './App.css';
 import './normal.css';
 // import setState
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
+  // use effect run once when app loads
+  useEffect(() => {
+    getEngines();
+  }, [])
 
   // add state for input and chat log
   const [input, setInput] = useState("");
+  const [models, setModels] = useState([]);
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
     message: "How can I help you today?"
-  }, {
-    user: "me",
-    message: "I want to use ChatGPT today."
-  }]);
+  }
+  // , {
+  //   user: "me",
+  //   message: "I want to use ChatGPT today."
+  // }
+  ]);
+
+  // clear chat history
+  function clearChat() {
+    setChatLog([]);
+  }
+
+  function getEngines() {
+    fetch("http://localhost:4000/models")
+      .then(res => res.json())
+      .then(data =>
+        // console.log(data.models.data)
+        setModels(data.models.data))
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setChatLog([...chatLog, { user: "me", message: `${input}` }]);
+    let chatLogNew = [...chatLog, { user: "me", message: `${input}` }];
     setInput("");
+    setChatLog(chatLogNew)
     // fetch response to the api combining the chat log array of messages and sending it as a message to localhost:3000 as a post
+    const messages = chatLogNew.map((message) => message.message).join("\n")
     const response = await fetch("http://localhost:4000", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        message: chatLog.map((message) => message.message).join("")
+        message: messages
       })
     });
     const data = await response.json();
-    console.log(data);
+    setChatLog([...chatLogNew, { user: "gpt", message: `${data.message}` }])
+    console.log(data.message);
   }
 
   return (
     <div className="App">
       <aside className="sidemenu">
-        <div className="side-menu-button">
+        <div className="side-menu-button" onClick={clearChat}>
           <span>+</span>
           New chat
         </div>
+        {/* <div className="models">
+          <select>
+            {models.map((model, index) => (
+              <option key={model.id} value={model.id}>{model.id}</option>
+            ))}
+          </select>
+        </div> */}
       </aside>
       <section className="chatbox">
         <div className="chat-log">
