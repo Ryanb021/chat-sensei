@@ -12,7 +12,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 const port = 4000;
