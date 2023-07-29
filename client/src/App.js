@@ -17,10 +17,10 @@ function App() {
     user: "gpt",
     message: "How can I help you today?"
   }
-  // , {
-  //   user: "me",
-  //   message: "I want to use ChatGPT today."
-  // }
+    // , {
+    //   user: "me",
+    //   message: "I want to use ChatGPT today."
+    // }
   ]);
 
   // clear chat history
@@ -29,13 +29,12 @@ function App() {
   }
 
   function getEngines() {
-    fetch("https://chat-sensei-server.onrender.com/models", {
-      mode: 'no-cors',
-    })
+    fetch(`${process.env.REACT_APP_SERVER}/models`)
       .then(res => res.json())
       .then(data =>
         // console.log(data.models.data)
         setModels(data.models.data))
+      .catch(error => console.error("Error fetching models:", error));
   }
 
   async function handleSubmit(e) {
@@ -45,21 +44,23 @@ function App() {
     setChatLog(chatLogNew)
     // fetch response to the api combining the chat log array of messages and sending it as a message to localhost:3000 as a post
     const messages = chatLogNew.map((message) => message.message).join("\n")
-    const response = await fetch("https://chat-sensei-server.onrender.com", {
-      mode: 'no-cors',
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: messages
-      })
-    });
-    const data = await response.json();
-    setChatLog([...chatLogNew, { user: "gpt", message: `${data.message}` }])
-    console.log(data.message);
+    try {
+      const response = await fetch(`${process.env.REACT_APP_SERVER}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: messages
+        })
+      });
+      const data = await response.json();
+      setChatLog([...chatLogNew, { user: "gpt", message: `${data.message}` }])
+      console.log(data.message);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   }
-
   return (
     <div className="App">
       <aside className="sidemenu">
