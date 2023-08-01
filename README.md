@@ -1,5 +1,8 @@
 # Chat Sensei (Chat GPT Clone)
 
+## Deployed Link
+- https://chat-sensei.netlify.app/
+
 ## Introducing Chat Sensei - Your Ultimate Conversational AI Companion!
 
 - Chat Sensei is an advanced and sophisticated chat GPT clone designed to revolutionize your conversational experiences. With its cutting-edge natural language processing capabilities, Chat Sensei brings a whole new dimension of interaction, learning, and entertainment to your fingertips.
@@ -21,10 +24,10 @@
 
 - Prepare to embark on a journey of delightful conversations and endless possibilities with Chat Sensei. Whether you seek knowledge, entertainment, or heartfelt advice, Chat Sensei is here to enrich your life with its unparalleled conversational prowess. Say hello to the future of AI companionship with Chat Sensei!
 
-## Deployed Link
-
-- In progress.
-
 ## Snapshot
-<img width="686" alt="Sample Snapshot" src="https://github.com/Ryanb021/my-chat-gpt/assets/120413183/77e35887-5511-4278-ad98-6470288db205">
+<img width="676" alt="Chat-Sensei 1" src="https://github.com/Ryanb021/chat-sensei/assets/120413183/5d26798e-1662-48eb-bedc-f4b2c98ddfb3">
+<img width="677" alt="Chat-Sensei 2" src="https://github.com/Ryanb021/chat-sensei/assets/120413183/5168a324-533d-40c9-a73b-ac421c78438c">
+<img width="665" alt="Chat-Sensei 3" src="https://github.com/Ryanb021/chat-sensei/assets/120413183/2d1fad5d-d686-428a-8c81-4c087c7cf6f2">
+<img width="676" alt="Chat-Sensei 4" src="https://github.com/Ryanb021/chat-sensei/assets/120413183/2141c1c1-6284-4fa8-aab1-f419dc323882">
+
 
